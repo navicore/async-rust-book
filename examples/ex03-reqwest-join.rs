@@ -8,14 +8,12 @@ async fn main() -> Result<(), Error> {
 
     let _ = reqwest::get(url).await?;
 
-    let first = reqwest::get(url);
-    let second = reqwest::get(url);
-    let thrird = reqwest::get(url);
-    let fourth = reqwest::get(url);
-    let _first = first.await?;
-    let _second = second.await?;
-    let _third = thrird.await?;
-    let _fourth = fourth.await?;
+    let (_, _, _, _) = tokio::join!(
+        reqwest::get(url),
+        reqwest::get(url),
+        reqwest::get(url),
+        reqwest::get(url),
+    );
 
     let elapsed_time = starttime.elapsed();
     println!("Time elapsed: {:?}", elapsed_time);
