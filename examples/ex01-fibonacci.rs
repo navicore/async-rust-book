@@ -11,7 +11,7 @@ fn main() {
 
     for i in 0..8 {
         let handle = std::thread::spawn(move || {
-            let result = fibonacci(4000);
+            let result = fibonacci(400);
             println!("Thread {} finished with result: {}", i, result);
         });
         threads.push(handle);
